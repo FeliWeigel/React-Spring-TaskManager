@@ -1,0 +1,61 @@
+.add-tasks{
+    display: flex;
+    height: 100vh;
+}
+
+.add-content {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 83%;
+}
+
+.add-content form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 50%;
+    height: 52%;
+    padding: 2.5rem;
+    box-shadow: 0px 0px 5px 0px rgb(8, 0, 125);
+}
+
+.add-content form label {
+    font-size: 1.4rem;
+    margin-bottom: .2rem;
+}
+
+.task-name, .task-date{
+    width: 300px;
+    font-size: 1.2rem;
+    padding: 5px;
+    border: 1.5px solid rgba(0, 0, 201, 0.489);
+    margin-bottom: .7rem;
+    transition: .4s;
+}
+
+.task-name:focus, .task-date:focus {
+    border: 1.5px solid rgb(1, 1, 126);
+}
+
+.task-date {
+    text-transform: uppercase;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(6, 2, 74);
+}
+
+.add-content form button {
+    cursor: pointer;
+    width: 90px;
+    font-size: 1.2rem;
+    background-color: rgb(1, 1, 126);
+    color: white;
+    padding: 6px 0;
+    border-radius: 15px;
+    transition: .4s;
+}
+
+.add-content form button:hover {
+    background-color: rgba(1, 1, 126, 0.715);
+}

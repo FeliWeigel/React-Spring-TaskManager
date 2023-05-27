@@ -1,0 +1,265 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: black;
+}
+
+a, button {
+  text-decoration: none;
+  background: none;
+  border: none;
+}
+
+ul, li {
+  list-style: none;
+}
+
+input {
+  border: none;
+  outline: none;
+  text-decoration: none;
+}
+
+.back-logo {
+  position: absolute;
+  top: -7rem;
+  left: -7rem;
+  font-size: 3.2rem;
+  color: rgba(0, 0, 114, 0.557);
+  border: 2.5px solid rgba(0, 0, 114, 0.557);
+  border-radius: 50%;
+  box-shadow: 0px 0px 4px 1px rgba(1, 1, 113, 0.495);
+  transition: .4s;
+}
+
+.back-logo:hover {
+  transform: scale(1.02);
+  color: rgb(0, 0, 96);
+  border: 2.5px solid rgb(0, 0, 96);
+}
+
+.error-msj {
+  color: red;
+  font-size: 1rem;
+  margin-top: -.5rem;
+  margin-bottom: .5rem;
+}
+
+.invalid-input {
+  outline: 1.3px solid red;
+  position: relative;
+}
+
+.invalid-input:focus {
+  border: 1.5px solid red;
+}
+
+.register {
+  max-width: 1440px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.register h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: rgba(0, 0, 0, 0.758);
+}
+
+.register-form{
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(5, 5, 94, 0.897);
+  border-radius: 7px;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  margin-bottom: .3rem;
+}
+
+.register-form label {
+  color: white;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+
+.div-name, .div-password {
+  display: flex;
+  gap: 1rem;
+}
+
+.register-input {
+  font-size: 1rem;
+  padding: 4px;
+  border-radius: 3px;
+}
+
+.register-input:focus {
+  border: none;
+  outline: none;
+}
+
+.input-firstname, .input-lastname,  .input-repeat, .input-password{
+  width: 170px;
+}
+
+.form-btn {
+  font-size: 1.1rem;
+  background-color: rgb(11, 65, 164);
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100px;
+  padding: 5px 0;
+  margin: 0 auto;
+  transition: .4s;
+}
+
+.form-btn:hover {
+  transform: translateY(-.2rem);
+  background-color: rgb(65, 102, 171);
+}
+
+.redirect-btn {
+  color: rgb(14, 14, 136);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.redirect-btn:hover {
+  color: rgb(72, 72, 177);
+}
+
+
+.input-email, .login-input-pass {
+  margin-top: .1rem;
+  width: 300px;
+}
+
+.error-alert {
+  width: 360px;
+  background-color: rgba(238, 2, 2, 0.747);
+  color: rgb(254, 237, 237);
+  border-radius: 5px;
+  padding: 4px 7px;
+}
+
+.nav{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  align-items: center;
+  height: 100vh;
+  z-index: 10;
+  width: 320px;
+  padding: 2rem 0;
+  background-color: rgb(3, 3, 74);
+  color: white;
+}
+
+.nav-user {
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.185);
+  padding-bottom: 30px;
+}
+
+.nav-user h3 {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-top: .4rem;
+}
+
+.nav-logo {
+  width: 65px;
+  margin: 0 auto;
+  font-size: 1.6rem;
+  font-weight: 600;
+  background-color: white;
+  color: rgb(3, 3, 74);
+  padding: 13px;
+  border-radius: 50%;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.548);
+  transition: .4s;
+}
+
+.nav-link:hover {
+  color: white;
+}
+
+.nav-link-logo {
+  font-size: 1.35rem;
+  color: rgba(255, 255, 255, 0.548);
+  cursor: pointer;
+  transition: .4s;
+}
+
+.nav-link-logo:hover {
+  color: white;
+}
+
+.nav-select {
+  background-color: transparent;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.548);
+  border: none;
+  font-size: 1.4rem;
+  margin-left: -4px;
+  transition: all .4s;
+}
+
+.nav-select:hover {
+  color: white;
+}
+
+.nav-select:focus {
+  outline: none;
+  border: none;
+}
+
+.nav-select option{
+  background-color: rgb(3, 3, 74);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: .4s;
+}
+
+.nav-logout {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.548);
+  transition: .4s;
+}
+
+.nav-logout:hover {
+  color: white;
+}
