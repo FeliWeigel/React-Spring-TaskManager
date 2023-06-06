@@ -16,7 +16,7 @@ export default function CompleteTask({task}){
 
         axios.put(url, task, config)
             .then(res => {  
-                location.reload()      
+                location.reload()     
             })
     }
     
