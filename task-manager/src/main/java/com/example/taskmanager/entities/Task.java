@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.Date;
+
 
 @Builder
 @Data
@@ -24,8 +24,11 @@ public class Task {
     private String name;
     private LocalDate expirationDate;
     private Boolean isCompleted;
+    private String state;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+
 }

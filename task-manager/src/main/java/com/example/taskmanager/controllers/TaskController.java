@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -24,9 +23,30 @@ public class TaskController {
         return new ResponseEntity<>(taskRepository.findAll(), HttpStatus.OK);
     }
 
+    @PutMapping("/task/complete")
+    @CrossOrigin("http://localhost:5173")
+    public ResponseEntity<Object> completeTask(@RequestBody Task task){
+        if(task.getId() == null){
+            return new ResponseEntity<>(new TaskNotFoundException("Error! request body id is null."), HttpStatus.NOT_FOUND);
+        }
+
+        if(taskRepository.findById(task.getId()).isPresent()){
+            if(!task.getIsCompleted()){
+                task.setIsCompleted(true);
+                return new ResponseEntity<>(taskRepository.save(task), HttpStatus.OK);
+            }else {
+                task.setIsCompleted(false);
+                return new ResponseEntity<>(taskRepository.save(task), HttpStatus.OK);
+            }
+        }
+
+        return new ResponseEntity<>(new TaskNotFoundException("Task with id:" + task.getId() + " not found in database!"), HttpStatus.NOT_FOUND);
+    }
+
     @PostMapping("/add")
     @CrossOrigin("http://localhost:5173")
     public ResponseEntity<Object> addTask(@RequestBody Task task){
+
         return new ResponseEntity<>(
                 taskRepository.save(task), HttpStatus.OK);
     }
@@ -34,7 +54,7 @@ public class TaskController {
     @DeleteMapping("/delete/{id}")
     @CrossOrigin("http://localhost:5173")
     public ResponseEntity<Object> deleteTask(@PathVariable Long id){
-        Optional task = taskRepository.findById(id);
+        Optional<Task> task = taskRepository.findById(id);
         if(task.isPresent()){
             taskRepository.deleteById(id);
             return new ResponseEntity<>(task, HttpStatus.OK);

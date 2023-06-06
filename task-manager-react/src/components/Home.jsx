@@ -3,11 +3,14 @@ import "./Home.css"
 import React from "react";;
 import { apiUrl } from "../services/apiUrl";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import DeleteTask from "./task/DeleteTask";
+import CompleteTask from "./task/CompleteTask";
+import UpdateTask from "./task/UpdateTask";
 
 export default class Home extends React.Component{
     state = {
-        tasks: [],
+        tasks: []
     }    
 
     componentDidMount(){
@@ -29,6 +32,7 @@ export default class Home extends React.Component{
     render(){
         return(
             <div className="home">
+                {localStorage.getItem("access_token") == null ? <Navigate to="/login"/> : null}
                 <Nav/>
                 <div className="home-content">
                     <h2>Manage your tasks!</h2>
@@ -36,7 +40,6 @@ export default class Home extends React.Component{
                         <caption>Task table</caption>
                         <thead>
                             <tr className="table-head-row">
-                                <th></th>
                                 <th>Name</th>
                                 <th>Expiration Date</th>
                                 <th>State</th>
@@ -48,22 +51,22 @@ export default class Home extends React.Component{
                         
                                 return(
                                     <tr className="table-body-row">
-                                        <td className="td-id">{task.id}</td>
                                         <td className="td-name">{task.name}</td>
                                         <td className="td-expiration">{task.expirationDate}</td>
-                                        <td className="td-state">{task.isCompleted === false ? "Pendiente" : "Completada"}</td>
+                                        <td className="td-state">{task.isCompleted ? "Completed" : "Pending"}</td>
                                         <td className="table-actions">
+                                            <CompleteTask task={task}/>
                                             <Link to="tasks/add"><i className='bx bx-list-plus action action-add'></i></Link>
-                                            <i className='bx bxs-edit action action-edit'></i>
-                                            <i className='bx bxs-trash action action-delete'></i>
+                                            <Link to={"tasks/update/" + task.id}><i className='bx bxs-edit action action-edit'></i></Link>
+                                            <DeleteTask taskId={task.id}/>
                                         </td>
                                     </tr>
                                 )
                             }) : (
-                                <div className="list-alert">
+                                <article className="list-alert">
                                     <h3>The task manager is empty. Add a new task!</h3>
-                                    <Link to="tasks/add"><i class='bx bxs-plus-circle'></i></Link>
-                                </div>
+                                    <Link to="tasks/add"><i className='bx bxs-plus-circle'></i></Link>
+                                </article>
                             )}
                         </tbody>
                     </table>

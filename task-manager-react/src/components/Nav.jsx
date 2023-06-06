@@ -1,44 +1,52 @@
-import React from "react"
+import React, { useState } from "react"
 import "../../index.css"
 import axios from "axios"
 import { apiUrl } from "../services/apiUrl"
-export default class Nav extends React.Component{
+import { Navigate } from "react-router-dom"
 
-    handleLogout = () => {
+export default function Nav(){
+    const [isLogged, setIsLogged] = useState(false)
+
+    function handleLogout() {
         const url = apiUrl + "auth/logout"
-        axios.post(url)
+        let token = localStorage.getItem("access_token");
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        };
+        axios.post(url, config)
         .then(res => {
-            console.log(res.data)
+            localStorage.clear("access_token")
+            location.reload()
         })
     }
 
-    render(){
-        return(
-            <nav className="nav">
-                <div className="nav-user">
-                    <h2 className="nav-logo">FW</h2>
-                    <h3>Felipe Weigel Munioz</h3>
-                </div>
-                <ul className="nav-menu">
-                    <li className="nav-link">
-                        <i className='bx bx-home'></i>Home
-                    </li>
-                    <li className="nav-link">
-                        <i className='bx bx-notepad nav-link-logo'></i>
-                        <select required className="nav-select">
-                            <option selected disabled>Tasks</option>
-                            <option value="History">History</option>
-                            <option value="History">Pending</option>
-                            <option value="History">Completed</option>
-                        </select>
-                    </li>
-                    <li className="nav-link">
-                        <i className='bx bx-cog'></i>Configuration
-                    </li>
-                </ul>
+    return(
+        <nav className="nav">
+            <div className="nav-user">
+                <h2 className="nav-logo">ABC</h2>
+                <h3>Username</h3>
+            </div>
+            <ul className="nav-menu">
+                <li className="nav-link">
+                    <i className='bx bx-home'></i>Home
+                </li>
+                <li className="nav-link">
+                    <i className='bx bx-notepad nav-link-logo'></i>
+                    <select required className="nav-select">
+                        <option selected disabled>Tasks</option>
+                        <option value="History">History</option>
+                        <option value="History">Pending</option>
+                        <option value="History">Completed</option>
+                    </select>
+                </li>
+                <li className="nav-link">
+                    <i className='bx bx-cog'></i>Configuration
+                </li>
+            </ul>
 
-                <button onClick={this.handleLogout} className="nav-logout"><i className='bx bx-log-out-circle logout-logo'></i>Log out</button>
-            </nav>
-        )
-    }
+            <button onClick={handleLogout} className="nav-logout"><i className='bx bx-log-out-circle logout-logo'></i>Log out</button>
+        </nav>
+    )
 }

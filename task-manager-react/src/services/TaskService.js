@@ -11,7 +11,7 @@ export const addTask = (task) => {
     }
     axios.post(URL, task, config)
     .then(res => {
-        console.log(res.data)
+        return res.data
     })
 }
 

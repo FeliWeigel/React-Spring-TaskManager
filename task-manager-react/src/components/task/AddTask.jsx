@@ -31,8 +31,10 @@ export default class AddTask extends React.Component{
   }
 
   addTaskToList = () => {
-    const inputName = document.getElementById("name")
-    const inputDate = document.getElementById("date")
+    const inputName = document.getElementById("name");
+    const inputDate = document.getElementById("date");
+    let date = new Date();
+
     if(this.state.task.name == ""){
       this.setState({
         errorName: true,
@@ -69,14 +71,18 @@ export default class AddTask extends React.Component{
           <Nav/>
           <div className='add-content'>
               <form onSubmit={this.handleSubmit}>
-              <Link to="/"><i class='bx bx-undo back-logo'></i></Link>
-                  <label htmlFor="taskName">What should you do?</label>
-                  <input onChange={this.handleChange} type="text" name='name' className='task-name' id='name' placeholder='Enter task to be done'/>
+                <Link to="/"><i class='bx bx-undo back-logo'></i></Link>
+                <h3>Add a new task!</h3>
+
+                <label htmlFor="taskName">What should you do?</label>
+                <input onChange={this.handleChange} type="text" name='name' className='task-name' id='name' placeholder='Enter task to be done'/>
                   {this.state.task.name == "" && this.state.errorName == true ? <p className='error-msj'>{this.state.errorMsg}</p> : null}
-                  <label htmlFor="taskDate">Task expiration date</label>
-                  <input onChange={this.handleChange} type="date" name='expirationDate' id='date' className='task-date'/>
+                  
+                <label htmlFor="taskDate">Task expiration date</label>
+                <input onChange={this.handleChange} type="date" name='expirationDate' id='date' className='task-date'/>
                   {this.state.task.expirationDate == "" && this.state.errorDate == true ? <p className='error-msj'>{this.state.errorMsg}</p> : null}
-                  <button onClick={this.addTaskToList}>Save</button>
+              
+                <button onClick={this.addTaskToList}>Save</button>
               </form>
           </div>
       </section>

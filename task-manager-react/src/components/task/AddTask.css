@@ -59,3 +59,13 @@
 .add-content form button:hover {
     background-color: rgba(1, 1, 126, 0.715);
 }
+
+/*UPDATE*/
+.update-content form {
+    padding: 1.5rem 2rem;
+}
+
+form h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}

@@ -171,26 +171,26 @@ input {
 }
 
 .nav-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.185);
   padding-bottom: 30px;
 }
 
 .nav-user h3 {
-  text-align: center;
   font-size: 1.3rem;
   margin-top: .4rem;
 }
 
 .nav-logo {
-  width: 65px;
-  margin: 0 auto;
   font-size: 1.6rem;
   font-weight: 600;
   background-color: white;
   color: rgb(3, 3, 74);
-  padding: 13px;
   border-radius: 50%;
+  padding: 13px;
 }
 
 .nav-menu {
