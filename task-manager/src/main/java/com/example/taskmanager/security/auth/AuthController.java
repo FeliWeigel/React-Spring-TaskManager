@@ -22,13 +22,11 @@ public class AuthController {
     private final UserRepository userRepository;
 
     @PostMapping("/register")
-    @CrossOrigin("http://localhost:5173")
     public ResponseEntity<Object> userRegister(@RequestBody RegisterRequest registerRequest){
         return authService.register(registerRequest);
     }
 
     @PostMapping("/login")
-    @CrossOrigin("http://localhost:5173")
     public ResponseEntity<AuthResponse> userLogin(@RequestBody AuthRequest authRequest){
         return new ResponseEntity<>(authService.login(authRequest), HttpStatus.OK);
     }
@@ -44,7 +42,6 @@ public class AuthController {
     }
 
     @PostMapping("/logout")
-    @CrossOrigin("http://localhost:5173")
     public ResponseEntity<String> logout(){
         if(SecurityContextHolder.getContext().getAuthentication() == null){
             return new ResponseEntity<>("Error. Authentication not found.", HttpStatus.NOT_FOUND);
