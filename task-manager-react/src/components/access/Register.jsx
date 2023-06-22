@@ -37,7 +37,7 @@ export default class Register extends React.Component {
             if(res.data !== null){
                 this.setState({
                     error: false,
-                    errorMsg: "user save!"
+                    errorMsg: "User save!"
                 })
             }
             console.log(res.data)
